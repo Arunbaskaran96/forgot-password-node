@@ -18,7 +18,8 @@ router.post("/user", async (req, res) => {
         const hash = await bcrypt.hash(req.body.password, salt);
         req.body.password = hash;
         const user = new Users({
-          userName: req.body.userName,
+          firstname: req.body.firstname,
+          lastname: req.body.lastname,
           email: req.body.email,
           password: req.body.password,
         });
@@ -34,6 +35,17 @@ router.post("/user", async (req, res) => {
   } else {
     res.status(400).json({ message: "no user added" });
   }
+});
+
+router.get("/users", (req, res) => {
+  Users.find()
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: "something went wrong" });
+    });
 });
 
 router.post("/login", async (req, res) => {

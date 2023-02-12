@@ -8,7 +8,9 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 
 const UserController = require("./Controllers/UserController");
+const UrlController = require("./Controllers/UrlController");
 
 app.use("/", UserController);
+app.use("/", UrlController);
 
 module.exports = app;
