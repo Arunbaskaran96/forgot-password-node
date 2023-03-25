@@ -8,7 +8,9 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 
 const UserController = require("./Controllers/Auth/SignupController");
+const SigninController=require("./Controllers/Auth/SigninController")
 
 app.use("/", UserController);
+app.use("/",SigninController)
 
 module.exports = app;
