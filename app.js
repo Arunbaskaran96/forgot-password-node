@@ -7,8 +7,8 @@ app.use(cors());
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 
-const UserController = require("./Controllers/UserController");
+const SignupController = require("./Controllers/Auth/SignupController");
 
-app.use("/", UserController);
+app.use("/", SignupController);
 
 module.exports = app;
