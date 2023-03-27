@@ -3,6 +3,9 @@ const router=express.Router()
 const bcrypt=require("bcrypt")
 const Usermodel=require("../../Models/UserModel")
 
+const Authverify=require("../middleware/Verify")
+const UerVerify=require("../middleware/UserVerify")
+
 router.post("/register",async(req,res)=>{
     try {
         const newone=await Usermodel.findOne({email:req.body.email})
@@ -50,6 +53,23 @@ router.get("/users",(req,res)=>{
 })
 
 
+router.get("/user",Authverify,UerVerify,(req,res)=>{
+    Usermodel.findOne({_id:req.Uniqueid}).then((result)=>{
+        res.status(200).json(result)
+    }).catch(err=>{
+        console.log(err)
+        res.status(500).json({message:"something went wrong"})
+    })
+})
+
+router.put("/user",Authverify,UerVerify,(req,res)=>{
+    Usermodel.findOneAndUpdate({_id:req.Uniqueid}).then(result=>{
+        res.status(200).json({message:"Updated"})
+    }).catch(err=>{
+        console.log(err)
+        res.status(500).json({message:"something went wrong"})
+    })
+})
 
 
 module.exports=router

@@ -31,4 +31,4 @@ role:{
 }
 });
 
-module.exports = mongoose.model("consumer", UserModel);
+module.exports = mongoose.model("user", UserModel);
