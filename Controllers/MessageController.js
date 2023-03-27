@@ -4,7 +4,7 @@ const router=express.Router()
 
 const MessageModel=require("../Models/MessageModel")
 const AuthVerify=require("./middleware/Verify")
-const UserVerify=require(".//middleware/UserVerify")
+const UserVerify=require("./middleware/UserVerify")
 
 
 // router.post("/message",AuthVerify,UserVerify,async(req,res)=>{

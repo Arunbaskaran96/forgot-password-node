@@ -15,5 +15,6 @@ const MessageController=require("./Controllers/MessageController")
 app.use("/", UserController);
 app.use("/",SigninController)
 app.use("/",FriendsController)
+app.use("/",MessageController)
 
 module.exports = app;
