@@ -62,6 +62,15 @@ router.get("/user",Authverify,UerVerify,(req,res)=>{
     })
 })
 
+router.get("/user/:id",Authverify,UerVerify,(req,res)=>{
+    Usermodel.findOne({_id:req.params.id}).then((result)=>{
+        res.status(200).json(result)
+    }).catch(err=>{
+        console.log(err)
+        res.status(500).json({message:"something went wrong"})
+    })
+})
+
 router.put("/user",Authverify,UerVerify,(req,res)=>{
     Usermodel.findOneAndUpdate({_id:req.Uniqueid}).then(result=>{
         res.status(200).json({message:"Updated"})
